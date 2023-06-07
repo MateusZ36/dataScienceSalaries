@@ -14,12 +14,14 @@ The data is from Kaggle's dataset of [Data Science Salary 2023](https://www.kagg
  - Removed all rows where `salary_in_usd` was null
  - Converted `company_location` and `employee_residence` to alpha-3 instead of alpha-2
 ### Data distribution
-![distribution_of_company_size.png](results%2Fdistribution_of_company_size.png)
-![job_titles_percentage.png](results%2Fjob_titles_percentage.png)
-![work_year_distribution.png](results%2Fwork_year_distribution.png)
+![Distribution of company size.png](results/distribution_of_company_size.png)
+![Kob titles percentage.png](results/job_titles_percentage.png)
+![Work year distribution.png](results/work_year_distribution.png)
 ### Data analysis
 #### Average Salary by company location
 ![Salary by country](results/avg_salary_by_company_location.png)
 ![Salary by country (map)](results/avg_salary_by_company_location_map.png)
 ### Average Salary by job title and year
-![median_salary_by_year.png](results/avg_salary_by_year.png)
+![Average salary by year.png](results/avg_salary_by_year.png)
+
+Github link: https://github.com/MateusZ36/dataScienceSalaries

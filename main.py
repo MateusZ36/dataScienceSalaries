@@ -94,17 +94,16 @@ fig1 = px.choropleth(
 
 fig1.write_image('results/avg_salary_by_company_location_map.png')
 
-# Average salary by company_location
 avg_salary_by_location = df.groupby('company_location')['salary_in_usd'].mean().sort_values(ascending=False)
 plt.figure(figsize=(14, 6))
 sns.barplot(x=avg_salary_by_location.index, y=avg_salary_by_location, color='grey')
 plt.title('Average Salary by Company Location (Yearly)')
 plt.xlabel('Company Location')
-plt.ylabel('Average Adjusted Salary (Yearly)')
+plt.ylabel('Average Salary (Yearly)')
 plt.xticks(rotation=90)
 plt.savefig('results/avg_salary_by_company_location.png')
 
-pivot_table = df.pivot_table(values='salary_in_usd', index='job_title', columns='work_year', aggfunc='median')
+pivot_table = df.pivot_table(values='salary_in_usd', index='job_category', columns='work_year', aggfunc='median')
 plt.figure(figsize=(14, 6))
 sns.heatmap(pivot_table, annot=True, fmt=".2f", cmap="YlGnBu")
 plt.title('Average Salary by Year')
@@ -113,9 +112,7 @@ plt.ylabel('Job Title')
 plt.savefig('results/avg_salary_by_year.png')
 
 group = df['company_size'].value_counts()
-fig = px.bar(
-	y=group.values, x=group.index, color=group.index, text=group.values, title='Distribution of Company Size'
-)
+fig = px.bar(y=group.values, x=group.index, color=group.index, text=group.values, title='Distribution of Company Size')
 
 fig.update_layout(xaxis_title="Company Size", yaxis_title="count")
 fig.write_image('results/distribution_of_company_size.png')
@@ -135,13 +132,14 @@ with open("README.md", "w+") as f:
 		" - Removed all rows where `salary_in_usd` was null\n"
 		" - Converted `company_location` and `employee_residence` to alpha-3 instead of alpha-2\n"
 		"### Data distribution\n"
-		"![distribution_of_company_size.png](results%2Fdistribution_of_company_size.png)\n"
-		"![job_titles_percentage.png](results%2Fjob_titles_percentage.png)\n"
-		"![work_year_distribution.png](results%2Fwork_year_distribution.png)\n"
+		"![Distribution of company size.png](results/distribution_of_company_size.png)\n"
+		"![Kob titles percentage.png](results/job_titles_percentage.png)\n"
+		"![Work year distribution.png](results/work_year_distribution.png)\n"
 		"### Data analysis\n"
 		"#### Average Salary by company location\n"
 		"![Salary by country](results/avg_salary_by_company_location.png)\n"
 		"![Salary by country (map)](results/avg_salary_by_company_location_map.png)\n"
 		"### Average Salary by job title and year\n"
-		"![median_salary_by_year.png](results/avg_salary_by_year.png)\n"
+		"![Average salary by year.png](results/avg_salary_by_year.png)\n\n"
+		"Github link: https://github.com/MateusZ36/dataScienceSalaries"
 	)
